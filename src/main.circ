@@ -13,6 +13,7 @@
       <a name="facing" val="north"/>
     </tool>
     <tool name="Clock">
+      <a name="appearance" val="classic"/>
       <a name="facing" val="north"/>
     </tool>
     <tool name="Constant">
@@ -31,6 +32,7 @@
   <lib desc="#TCL" name="8"/>
   <lib desc="#Base" name="9">
     <tool name="Text Tool">
+      <a name="color" val="#f20a00"/>
       <a name="font" val="SansSerif bold 12"/>
     </tool>
   </lib>
@@ -53,6 +55,7 @@
     <tool name="Edit Tool"/>
     <tool name="Wiring Tool"/>
     <tool name="Text Tool">
+      <a name="color" val="#f20a00"/>
       <a name="font" val="SansSerif bold 12"/>
     </tool>
     <sep/>
@@ -60,6 +63,7 @@
     <tool name="Pin">
       <a name="facing" val="west"/>
       <a name="type" val="output"/>
+      <a name="width" val="4"/>
     </tool>
     <sep/>
     <tool name="NOT Gate"/>
@@ -162,8 +166,8 @@
       <circ-port dir="out" pin="1340,10" x="120" y="60"/>
       <circ-port dir="out" pin="1340,40" x="120" y="70"/>
       <circ-port dir="out" pin="1430,430" x="100" y="160"/>
-      <circ-port dir="out" pin="1480,330" x="120" y="110"/>
-      <circ-port dir="out" pin="1480,350" x="120" y="120"/>
+      <circ-port dir="out" pin="1480,330" x="120" y="120"/>
+      <circ-port dir="out" pin="1480,350" x="120" y="110"/>
       <circ-port dir="out" pin="1740,530" x="70" y="160"/>
     </appear>
     <comp lib="0" loc="(1010,430)" name="Splitter">
@@ -384,14 +388,14 @@
     <comp lib="0" loc="(1480,330)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
-      <a name="label" val="rA"/>
+      <a name="label" val="rB"/>
       <a name="type" val="output"/>
       <a name="width" val="4"/>
     </comp>
     <comp lib="0" loc="(1480,350)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
-      <a name="label" val="rB"/>
+      <a name="label" val="rA"/>
       <a name="type" val="output"/>
       <a name="width" val="4"/>
     </comp>
@@ -553,12 +557,10 @@
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
-30 f2 19 fc 6*ff 30 f1 e7
-3 6*0 30 f6 8*0 30 f8 1
-7*0 30 f9 5 7*0 20 6a 61
-9a 75 54 7*0 20 6b 60 bb
-20 b2 60 8b 20 b1 60 86
-70 32
+30 f4 0 1 6*0 30 f0 f
+7*0 30 f1 a 7*0 20 2 60
+12 20 28 20 2 61 12 20
+29 20 2 a0 2f b0 3f
 </a>
       <a name="label" val="code"/>
       <a name="line" val="dual"/>
@@ -568,12 +570,10 @@
       <a name="addrWidth" val="12"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 12 8
-30 f2 19 fc 6*ff 30 f1 e7
-3 6*0 30 f6 8*0 30 f8 1
-7*0 30 f9 5 7*0 20 6a 61
-9a 75 54 7*0 20 6b 60 bb
-20 b2 60 8b 20 b1 60 86
-70 32
+30 f4 0 1 6*0 30 f0 f
+7*0 30 f1 a 7*0 20 2 60
+12 20 28 20 2 61 12 20
+29 20 2 a0 2f b0 3f
 </a>
       <a name="line" val="octo"/>
       <a name="misaligned" val="true"/>
@@ -586,14 +586,54 @@
 2 0 1 1
 </a>
       <a name="dataWidth" val="2"/>
+      <a name="label" val="byte_offsets_do_not_edit"/>
     </comp>
-    <comp lib="9" loc="(1234,630)" name="Text">
+    <comp lib="9" loc="(1085,270)" name="Text">
+      <a name="color" val="#cc000c"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="Do not edit^ Byte Offsets encoded"/>
+    </comp>
+    <comp lib="9" loc="(1090,70)" name="Text">
+      <a name="color" val="#ff0200"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text">00 = no args +0
+01 = rA:rB +1
+10 = V/D +8
+11 = rA:rB + V/D +9</a>
+    </comp>
+    <comp lib="9" loc="(1100,420)" name="Text">
+      <a name="color" val="#f20a00"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="10 = V/D -&gt; bytes 1-8"/>
+    </comp>
+    <comp lib="9" loc="(1125,455)" name="Text">
+      <a name="color" val="#f20a00"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="11 = rA:rB + V/D -&gt; bytes 2-9"/>
+    </comp>
+    <comp lib="9" loc="(1230,630)" name="Text">
+      <a name="color" val="#d10000"/>
       <a name="text" val="PC + 00: +1, 01: +2, 10: +9, 11: +10"/>
     </comp>
-    <comp lib="9" loc="(851,55)" name="Text">
+    <comp lib="9" loc="(1520,490)" name="Text">
+      <a name="color" val="#f20a00"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="&lt;&lt; HALT (0x00) overrides +PC to 0"/>
+    </comp>
+    <comp lib="9" loc="(735,75)" name="Text">
+      <a name="color" val="#f20a00"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="first 2 ROM bytes (Set me)"/>
+    </comp>
+    <comp lib="9" loc="(760,375)" name="Text">
+      <a name="color" val="#f20a00"/>
+      <a name="font" val="SansSerif bold 12"/>
+      <a name="text" val="last 8 ROM bytes (Set same val)"/>
+    </comp>
+    <comp lib="9" loc="(850,55)" name="Text">
       <a name="text" val="8-15 vals?"/>
     </comp>
-    <comp lib="9" loc="(892,33)" name="Text">
+    <comp lib="9" loc="(890,30)" name="Text">
       <a name="text" val="0-7, icode ifun"/>
     </comp>
     <wire from="(1040,390)" to="(1040,430)"/>
